@@ -1,7 +1,8 @@
 import { Database } from "@db/sqlite";
 import * as insightsTable from "$tables/insights.ts";
-import { HasDBClient } from "./shared.ts";
+import type { HasDBClient } from "./shared.ts";
 import { afterAll, beforeAll } from "@std/testing/bdd";
+import insertInsight from "./operations/insert-insight.ts";
 
 type Fixture = HasDBClient & {
   insights: {
@@ -27,7 +28,10 @@ export const withDB = <R>(fn: (fixture: Fixture) => R): R => {
       },
       insert(insights) {
         for (const item of insights) {
-          db.exec(insightsTable.insertStatement(item));
+          insertInsight({
+            db,
+            item,
+          });
         }
       },
     },

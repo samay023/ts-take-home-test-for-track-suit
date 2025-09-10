@@ -17,7 +17,9 @@ export default function insertInsight(
 ) {
   const result = InsertInsight.safeParse(input.item);
   if (!result.success) {
-    throw new Error(result.error.message || "Invalid insert body");
+    throw new Error(
+      result.error.errors.map((e) => e.message).join(", "),
+    );
   }
 
   const statement = input.db.prepare(`
