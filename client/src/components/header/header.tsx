@@ -5,7 +5,11 @@ import { AddInsight } from "../add-insight/add-insight.tsx";
 
 export const HEADER_TEXT = "Suit Tracker Insights";
 
-export const Header = () => {
+interface Props {
+  reloadInsights: () => void;
+}
+
+export const Header = ({ reloadInsights }: Props) => {
   const [addInsightOpen, setAddInsightOpen] = useState(false);
 
   return (
@@ -23,6 +27,7 @@ export const Header = () => {
       <AddInsight
         open={addInsightOpen}
         onClose={() => setAddInsightOpen(false)}
+        reloadInsights={reloadInsights}
       />
     </>
   );

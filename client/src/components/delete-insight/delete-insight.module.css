@@ -1,0 +1,11 @@
+.heading {
+  font: var(--text-xl);
+  font-weight: var(--weight-medium);
+}
+
+.button-container {
+  display: flex;
+  flex-direction: row;
+  margin-top: var(--size-6);
+  gap: var(--size-4);
+}
