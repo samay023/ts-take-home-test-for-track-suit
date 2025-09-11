@@ -7,14 +7,14 @@ describe("Modal", () => {
     render(
       <Modal open={false} onClose={() => undefined}>
         Closed modal
-      </Modal>,
+      </Modal>
     );
     expect(screen.queryByText("Closed modal")).toBeFalsy();
 
     render(
-      <Modal open={true} onClose={() => undefined}>
+      <Modal open onClose={() => undefined}>
         <div>Open modal</div>
-      </Modal>,
+      </Modal>
     );
     expect(screen.getByText("Open modal")).toBeTruthy();
   });
